@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7: Menú de Navegación Desplegable</title>
+    <style>
+        /* Estilos para la lista no ordenada */
+        ul {
+            list-style-type: none; /* Elimina los puntos de la lista */
+            padding: 0; /* Elimina el espacio alrededor de la lista */
+        }
+
+        /* Estilos para cada elemento de la lista */
+        li {
+            padding: 10px; /* Añade espacio alrededor del contenido del elemento de la lista */
+            background-color: #f0f0f0; /* Establece el color de fondo del elemento de la lista */
+            color: #333; /* Establece el color del texto del elemento de la lista */
+            cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre el elemento de la lista */
+        }
+
+        /* Estilos para el submenú */
+        .submenu {
+            display: none; /* Oculta el submenú por defecto */
+            list-style-type: none; /* Elimina los puntos de la lista */
+            padding: 0; /* Elimina el espacio alrededor de la lista */
+            margin-left: 20px; /* Añade espacio a la izquierda de la lista */
+        }
+
+        /* Estilos para cada elemento del submenú */
+        .submenu li {
+            padding: 5px; /* Añade espacio alrededor del contenido del elemento de la lista */
+            background-color: #333; /* Establece el color de fondo del elemento de la lista */
+            color: #f0f0f0; /* Establece el color del texto del elemento de la lista */
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <!-- Elemento de la lista que al hacer clic muestra u oculta el submenú correspondiente -->
+        <li onclick="alternarSubmenu('menu1')">Menú 1</li>
+        <!-- Submenú correspondiente al primer elemento de la lista -->
+        <ul class="submenu" id="menu1">
+            <li>Submenú 1</li>
+            <li>Submenú 2</li>
+            <li>Submenú 3</li>
+        </ul>
+
+        <!-- Elemento de la lista que al hacer clic muestra u oculta el submenú correspondiente -->
+        <li onclick="alternarSubmenu('menu2')">Menú 2</li>
+        <!-- Submenú correspondiente al segundo elemento de la lista -->
+        <ul class="submenu" id="menu2">
+            <li>Submenú 1</li>
+            <li>Submenú 2</li>
+        </ul>
+
+        <!-- Elemento de la lista que al hacer clic muestra u oculta el submenú correspondiente -->
+        <li onclick="alternarSubmenu('menu3')">Menú 3</li>
+        <!-- Submenú correspondiente al tercer elemento de la lista -->
+        <ul class="submenu" id="menu3">
+            <li>Submenú 3</li>
+        </ul>
+    </ul>
+
+    <script>
+        /* Función para mostrar u ocultar un submenú */
+        function alternarSubmenu(id) {
+            const submenu = document.getElementById(id); /* Obtiene el submenú por su id */
+            /* Comprueba si el submenú está oculto o no y cambia su estado */
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block"; /* Muestra el submenú */
+            } else {
+                submenu.style.display = "none"; /* Oculta el submenú */
+            }
+        }
+    </script>
+</body>
+</html>

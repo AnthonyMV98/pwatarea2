@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5: Validación de Formulario</title>
+    <style>
+        /* Estilos para el cuerpo de la página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* Estilos para el formulario */
+        form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        /* Estilos para los campos de entrada del formulario */
+        input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        /* Estilos para el botón de envío del formulario */
+        button {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form id="miFormulario">
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="email" id="correoElectronico" placeholder="Correo electrónico">
+        <input type="password" id="contrasena" placeholder="Contraseña">
+        <button type="submit">Enviar</button>
+    </form>
+    
+    <script>
+        /* Añade un evento de escucha al formulario para prevenir el envío por defecto y validar los campos */
+        document.getElementById('miFormulario').addEventListener('submit', function(evento) {
+            /* Previene el envío del formulario */
+            evento.preventDefault();
+    
+            /* Obtiene los valores de los campos del formulario */
+            var nombre = document.getElementById('nombre').value;
+            var correoElectronico = document.getElementById('correoElectronico').value;
+            var contrasena = document.getElementById('contrasena').value;
+    
+            /* Verifica si todos los campos están llenos, si no, muestra una alerta */
+            if (!nombre || !correoElectronico || !contrasena) {
+                alert('Por favor, rellena todos los campos.');
+            } else {
+                /* Si todos los campos están llenos, muestra un mensaje de éxito */
+                alert('¡Formulario enviado con éxito!');
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3: Cambio de Imagen al Pasar el Ratón</title>
+    <style>
+        /* Estilos para el contenedor de la imagen */
+        #contenedorImagen {
+            width: 500px;
+            height: 800px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        /* Estilos para la imagen dentro del contenedor */
+        #contenedorImagen img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Estilos para la imagen cuando el ratón pasa sobre el contenedor */
+        #contenedorImagen:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio 3: Cambio de Imagen al Pasar el Ratón</h1>
+    <div id="contenedorImagen">
+        <img src="img/imagen1.jpg" alt="Imagen 1">
+    </div>
+
+    <script>
+        /* Obtiene el contenedor de la imagen */
+        const contenedorImagen = document.getElementById('contenedorImagen');
+        /* Define las rutas de las dos imágenes */
+        const imagen1 = 'img/imagen1.jpg';
+        const imagen2 = 'img/imagen2.jpg';
+
+        /* Añade un evento de escucha al contenedor de la imagen para cambiar la imagen cuando el ratón pasa sobre él */
+        contenedorImagen.addEventListener('mouseenter', () => {
+            document.querySelector('img').src = imagen2;
+        });
+
+        /* Añade un evento de escucha al contenedor de la imagen para cambiar la imagen cuando el ratón sale de él */
+        contenedorImagen.addEventListener('mouseleave', () => {
+            document.querySelector('img').src = imagen1;
+        });
+    </script>
+</body>
+</html>

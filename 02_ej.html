@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2: Calculadora Simple</title>
+    <style>
+        /* Estilos para el cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Estilos para el título */
+        h2 {
+            color: #333;
+        }
+
+        /* Estilos para la calculadora */
+        #calculadora {
+            width: 300px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+        }
+
+        /* Estilos para el campo de texto de la calculadora */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 20px;
+        }
+
+        /* Estilos para los botones de la calculadora */
+        button {
+            width: 70px;
+            height: 70px;
+            font-size: 20px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        /* Estilos para el efecto hover de los botones */
+        button:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calculadora Simple</h2>
+
+    <!-- Campo de texto donde se muestra el resultado -->
+    <input id="resultado" type="text" readonly>
+
+    <br>
+
+    <!-- Botones de la calculadora -->
+    <button onclick="agregar('1')">1</button>
+    <button onclick="agregar('2')">2</button>
+    <button onclick="agregar('3')">3</button>
+    <button onclick="agregar('+')">+</button>
+
+    <br>
+
+    <button onclick="agregar('4')">4</button>
+    <button onclick="agregar('5')">5</button>
+    <button onclick="agregar('6')">6</button>
+    <button onclick="agregar('-')">-</button>
+
+    <br>
+
+    <button onclick="agregar('7')">7</button>
+    <button onclick="agregar('8')">8</button>
+    <button onclick="agregar('9')">9</button>
+    <button onclick="agregar('*')">*</button>
+
+    <br>
+
+    <button onclick="agregar('0')">0</button>
+    <button onclick="agregar('.')">.</button>
+    <button onclick="calcular()">=</button>
+    <button onclick="agregar('/')">/</button>
+
+    <br>
+
+    <!-- Botón para borrar el contenido del campo de texto -->
+    <button onclick="borrar()">C</button>
+
+    <script>
+    /* Obtiene el elemento con id "resultado" */
+    let resultado = document.getElementById("resultado");
+
+    /* Función para agregar un valor al campo de texto */
+    function agregar(valor) {
+        resultado.value += valor;
+    }
+
+    /* Función para calcular el resultado */
+    function calcular() {
+        try {
+            resultado.value = eval(resultado.value);
+        } catch {
+            resultado.value = "Error";
+        }
+    }
+
+    /* Función para borrar el contenido del campo de texto */
+    function borrar() {
+        resultado.value = "";
+    }
+    </script>
+</body>
+</html>

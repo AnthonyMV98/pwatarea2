@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10: Juego de Preguntas y Respuestas</title>
+    <style>
+        /* Estilos para el cuerpo de la página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* Estilos para el contenedor de preguntas */
+        #preguntas {
+            display: none;
+        }
+        /* Estilos para el contenedor de preguntas cuando es visible */
+        #preguntas.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor de preguntas -->
+    <div id="preguntas">
+        <!-- Pregunta actual -->
+        <h2 id="pregunta"></h2>
+        <!-- Opciones de respuesta -->
+        <input type="radio" name="respuesta" id="respuesta1"><label for="respuesta1" id="etiquetaRespuesta1"></label><br>
+        <input type="radio" name="respuesta" id="respuesta2"><label for="respuesta2" id="etiquetaRespuesta2"></label><br>
+        <input type="radio" name="respuesta" id="respuesta3"><label for="respuesta3" id="etiquetaRespuesta3"></label><br>
+        <!-- Botón para comprobar la respuesta y pasar a la siguiente pregunta -->
+        <button onclick="comprobarRespuesta()">Siguiente</button>
+    </div>
+    
+    <!-- Contenedor del resultado -->
+    <div id="resultado"></div>
+    <script>
+        /* Array de objetos que representan las preguntas del juego */
+        var preguntas = [
+            {pregunta: '¿Cuál es la capital de Ecuador?', respuestas: ['Quito', 'Buenos Aires', 'Brasilia'], respuestaCorrecta: 0},
+            {pregunta: '¿Cuál es la capital de Argentina?', respuestas: ['Quito', 'Buenos Aires', 'Brasilia'], respuestaCorrecta: 1},
+            {pregunta: '¿Cuál es la capital de Brasil?', respuestas: ['Quito', 'Buenos Aires', 'Brasilia'], respuestaCorrecta: 2}
+        ];
+        /* Índice de la pregunta actual */
+        var preguntaActual = 0;
+        /* Puntuación del jugador */
+        var puntuacion = 0;
+    
+        /* Función para mostrar la pregunta actual */
+        function mostrarPregunta() {
+            document.getElementById('pregunta').textContent = preguntas[preguntaActual].pregunta;
+            document.getElementById('etiquetaRespuesta1').textContent = preguntas[preguntaActual].respuestas[0];
+            document.getElementById('etiquetaRespuesta2').textContent = preguntas[preguntaActual].respuestas[1];
+            document.getElementById('etiquetaRespuesta3').textContent = preguntas[preguntaActual].respuestas[2];
+            document.getElementById('preguntas').className = 'visible';
+        }
+    
+        /* Función para comprobar la respuesta del jugador y pasar a la siguiente pregunta */
+        function comprobarRespuesta() {
+            var respuesta = document.querySelector('input[name="respuesta"]:checked').id.slice(-1) - 1;
+            if (respuesta === preguntas[preguntaActual].respuestaCorrecta) {
+                puntuacion++;
+            }
+            preguntaActual++;
+            if (preguntaActual < preguntas.length) {
+                mostrarPregunta();
+            } else {
+                document.getElementById('preguntas').className = '';
+                document.getElementById('resultado').textContent = 'Puntuación: ' + puntuacion;
+            }
+        }
+    
+        /* Muestra la primera pregunta al cargar la página */
+        mostrarPregunta();
+    </script>
+</body>
+</html>

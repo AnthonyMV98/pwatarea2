@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1: Cambio de Estilo al Hacer Clic</title>
+    <style>
+        /* Estilos para el elemento con id "miElemento" */
+        #miElemento {
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+        }
+        /* Estilos para el botón */
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio 1: Cambio de Estilo al Hacer Clic</h1>
+    <!-- Botón que llama a la función "cambiarColor" cuando se hace clic en él -->
+    <button onclick="cambiarColor()">Haz clic aquí</button>
+
+    <!-- Elemento que cambia de color -->
+    <div id="miElemento">
+        Hola, ¡Me llamo Anthony Abraham Manjarrez Valero!
+    </div>
+
+    <script>
+    /* Función que cambia el color de fondo del elemento con id "miElemento" */
+    function cambiarColor() {
+        document.getElementById("miElemento").style.backgroundColor = "lightblue";
+    }
+    </script>
+</body>
+</html>

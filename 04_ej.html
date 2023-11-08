@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4: Reloj Analógico</title>
+    <style>
+        /* Estilos para el reloj */
+        #reloj {
+            position: relative;
+            width: 400px; /* Aumenta el tamaño del reloj */
+            height: 400px; /* Aumenta el tamaño del reloj */
+            margin: 0 auto;
+            background: url('img/relog.png') no-repeat;
+            background-size: cover;
+        }
+        /* Estilos para las manecillas del reloj */
+        .manecilla {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            background: black;
+        }
+        /* Estilos para la manecilla de la hora */
+        #manecilla-hora {
+            width: 4px;
+            height: 30%; /* Reduce el tamaño de la manecilla de la hora */
+        }
+        /* Estilos para la manecilla del minuto */
+        #manecilla-minuto {
+            width: 2px;
+            height: 35%; /* Reduce el tamaño de la manecilla del minuto */
+        }
+        /* Estilos para la manecilla del segundo */
+        #manecilla-segundo {
+            width: 1px;
+            height: 40%; /* Reduce el tamaño de la manecilla del segundo */
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio 4: Reloj Analógico</h1>
+    <br>
+    <div id="reloj">
+        <div id="manecilla-hora" class="manecilla"></div>
+        <div id="manecilla-minuto" class="manecilla"></div>
+        <div id="manecilla-segundo" class="manecilla"></div>
+    </div>
+    <script>
+        /* Función para actualizar la posición de las manecillas del reloj */
+        function actualizarReloj() {
+            var ahora = new Date(); // Obtiene la hora actual
+            var segundo = ahora.getSeconds(); // Obtiene los segundos actuales
+            var minuto = ahora.getMinutes(); // Obtiene los minutos actuales
+            var hora = ahora.getHours(); // Obtiene la hora actual
+
+            // Calcular el ángulo de las manecillas
+            var anguloSegundo = segundo * 6; // Calcula el ángulo de la manecilla del segundo
+            var anguloMinuto = minuto * 6 + segundo * 0.1; // Calcula el ángulo de la manecilla del minuto
+            var anguloHora = hora * 30 + minuto * 0.5; // Calcula el ángulo de la manecilla de la hora
+
+            // Actualizar la posición de las manecillas
+            document.getElementById('manecilla-segundo').style.transform = 'rotate(' + anguloSegundo + 'deg)'; // Actualiza la posición de la manecilla del segundo
+            document.getElementById('manecilla-minuto').style.transform = 'rotate(' + anguloMinuto + 'deg)'; // Actualiza la posición de la manecilla del minuto
+            document.getElementById('manecilla-hora').style.transform = 'rotate(' + anguloHora + 'deg)'; // Actualiza la posición de la manecilla de la hora
+        }
+
+        // Actualizar el reloj cada segundo
+        setInterval(actualizarReloj, 1000); // Llama a la función actualizarReloj cada segundo
+    </script>
+</body>
+</html>

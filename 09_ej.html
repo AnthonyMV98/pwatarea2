@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9: Temporizador de Cuenta Regresiva</title>
+    <style>
+        /* Estilos para el cuerpo de la página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* Estilos para el temporizador */
+        #temporizador {
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Temporizador -->
+    <div id="temporizador">10:00</div>
+    <script>
+        /* Tiempo restante en segundos (10 minutos) */
+        var tiempoRestante = 10 * 60;
+        /* Obtiene el elemento del temporizador */
+        var elementoTemporizador = document.getElementById('temporizador');
+    
+        /* Función para actualizar el temporizador */
+        function actualizarTemporizador() {
+            /* Calcula los minutos y segundos restantes */
+            var minutos = Math.floor(tiempoRestante / 60);
+            var segundos = tiempoRestante % 60;
+            /* Actualiza el texto del temporizador */
+            elementoTemporizador.textContent = minutos + ':' + (segundos < 10 ? '0' : '') + segundos;
+            /* Decrementa el tiempo restante */
+            tiempoRestante--;
+            /* Si el tiempo restante es menor que 0, lo establece a 0 */
+            if (tiempoRestante < 0) {
+                tiempoRestante = 0;
+            }
+        }
+    
+        /* Actualiza el temporizador cada segundo */
+        setInterval(actualizarTemporizador, 1000);
+    </script>
+</body>
+</html>

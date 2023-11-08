@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6: Lista de Tareas Interactiva</title>
+    <style>
+        /* Estilos para el cuerpo de la página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* Estilos para la lista de tareas */
+        #listaTareas {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* Estilos para cada tarea en la lista */
+        .tarea {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* Estilos para el botón de eliminar tarea */
+        .eliminar {
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Campo de texto para ingresar una nueva tarea -->
+    <input type="text" id="nuevaTarea" placeholder="Nueva tarea">
+    <!-- Botón para agregar una nueva tarea -->
+    <button onclick="agregarTarea()">Agregar</button>
+
+    <!-- Lista de tareas -->
+    <ul id="listaTareas"></ul>
+
+    <script>
+        /* Función para agregar una tarea a la lista */
+        function agregarTarea() {
+            var tarea = document.getElementById('nuevaTarea').value; // Obtiene el valor del campo de texto
+            if (tarea) { // Verifica si el campo de texto no está vacío
+                var li = document.createElement('li'); // Crea un nuevo elemento de lista
+                li.innerHTML = tarea + ' <span class="eliminar" onclick="eliminarTarea(this)">X</span>'; // Agrega la tarea y el botón de eliminar al elemento de lista
+                li.className = 'tarea'; // Agrega la clase 'tarea' al elemento de lista
+                document.getElementById('listaTareas').appendChild(li); // Agrega el elemento de lista a la lista de tareas
+                document.getElementById('nuevaTarea').value = ''; // Limpia el campo de texto
+            }
+        }
+
+        /* Función para eliminar una tarea de la lista */
+        function eliminarTarea(elemento) {
+            elemento.parentElement.remove(); // Elimina el elemento de lista que contiene el botón de eliminar que fue clickeado
+        }
+    </script>
+
+</body>
+</html>
