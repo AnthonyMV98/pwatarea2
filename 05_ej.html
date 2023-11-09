@@ -7,69 +7,118 @@
     <style>
         /* Estilos para el cuerpo de la página */
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
-        /* Estilos para el formulario */
-        form {
-            background-color: #fff;
+
+        /* Estilos para el contenedor del formulario */
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
             padding: 30px;
+            background-color: #fff;
             border-radius: 5px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
-        /* Estilos para los campos de entrada del formulario */
-        input {
+
+        /* Estilos para el título del formulario */
+        h2 {
+            text-align: center;
+        }
+
+        /* Estilos para las etiquetas y campos de entrada del formulario */
+        label, input {
             display: block;
-            width: 100%;
             margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
         }
+
+        /* Estilos para los campos de texto, correo electrónico y contraseña del formulario */
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Estilos para los mensajes de error */
+        .error {
+            color: red;
+        }
+
         /* Estilos para el botón de envío del formulario */
-        button {
-            padding: 10px 30px;
-            border: none;
-            border-radius: 5px;
+        input[type="submit"] {
             background-color: #007BFF;
             color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <form id="miFormulario">
-        <input type="text" id="nombre" placeholder="Nombre">
-        <input type="email" id="correoElectronico" placeholder="Correo electrónico">
-        <input type="password" id="contrasena" placeholder="Contraseña">
-        <button type="submit">Enviar</button>
-    </form>
-    
+    <!-- Contenedor del formulario -->
+    <div class="container">
+        <!-- Título del formulario -->
+        <h2>Formulario de Registro</h2>
+        <!-- Formulario de registro -->
+        <form id="formularioRegistro" onsubmit="return validarFormulario()">
+            <!-- Campo de nombre -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <span id="errorNombre" class="error"></span>
+
+            <!-- Campo de correo electrónico -->
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+            <span id="errorCorreo" class="error"></span>
+
+            <!-- Campo de contraseña -->
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+            <span id="errorContrasena" class="error"></span>
+
+            <!-- Botón de envío del formulario -->
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
     <script>
-        /* Añade un evento de escucha al formulario para prevenir el envío por defecto y validar los campos */
-        document.getElementById('miFormulario').addEventListener('submit', function(evento) {
-            /* Previene el envío del formulario */
-            evento.preventDefault();
-    
-            /* Obtiene los valores de los campos del formulario */
-            var nombre = document.getElementById('nombre').value;
-            var correoElectronico = document.getElementById('correoElectronico').value;
-            var contrasena = document.getElementById('contrasena').value;
-    
-            /* Verifica si todos los campos están llenos, si no, muestra una alerta */
-            if (!nombre || !correoElectronico || !contrasena) {
-                alert('Por favor, rellena todos los campos.');
-            } else {
-                /* Si todos los campos están llenos, muestra un mensaje de éxito */
-                alert('¡Formulario enviado con éxito!');
+        /* Función para validar el formulario */
+        function validarFormulario() {
+            /* Obtiene los elementos del formulario */
+            const nombre = document.getElementById("nombre");
+            const correo = document.getElementById("correo");
+            const contrasena = document.getElementById("contrasena");
+            const errorNombre = document.getElementById("errorNombre");
+            const errorCorreo = document.getElementById("errorCorreo");
+            const errorContrasena = document.getElementById("errorContrasena");
+            let valido = true;
+
+            /* Limpia los mensajes de error */
+            errorNombre.textContent = "";
+            errorCorreo.textContent = "";
+            errorContrasena.textContent = "";
+
+            /* Verifica si los campos del formulario están vacíos */
+            if (nombre.value === "") {
+                errorNombre.textContent = "El nombre es obligatorio.";
+                valido = false;
             }
-        });
+
+            if (correo.value === "") {
+                errorCorreo.textContent = "El correo electrónico es obligatorio.";
+                valido = false;
+            }
+
+            if (contrasena.value === "") {
+                errorContrasena.textContent = "La contraseña es obligatoria.";
+                valido = false;
+            }
+
+            /* Devuelve el estado de validez del formulario */
+            return valido;
+        }
     </script>
-    
 </body>
 </html>
